@@ -1,0 +1,46 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+void addingone(vector<int> v)
+{
+    int sum,borrow=1;
+    for(int i=0;i<v.size();i++)
+    {
+        sum=v[i]+borrow;
+        v.push_back(sum%10);
+         borrow=sum/10;
+    }
+    while(borrow==1)
+    {
+        v.push_back(borrow%10);
+        borrow=borrow/10;
+    }
+    while(v[v.size()-1]==0 && v.size()>1)
+    {
+        v.pop_back();
+    }
+    reverse(v.begin(),v.end());
+}
+
+int main()
+{
+    int n,x,i=0;
+    cout<<"Enter the lenght\n";
+    cin>>n;
+    vector<int>v(n);
+    cout<<"Enter the number\n";
+     for(int i=0;i<n;i++)
+     { cin>>x;
+         v.push_back(x);
+     }
+    reverse(v.begin(),v.end());
+    addingone(v);
+    
+    for(int i=0;i<n;i++)
+    {  cout<<v[i];
+       
+    }
+    
+}
